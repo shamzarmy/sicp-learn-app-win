@@ -1,0 +1,126 @@
+html {
+    background-color: rgba(27, 38, 54, 1);
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: white;
+    min-height: 100%;
+    overflow: hidden;
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0.75rem 0.75rem 0;
+}
+
+.hero,
+.playlist-section {
+    width: 100%;
+}
+
+.playlist-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0.75rem auto 0;
+    padding: 0 0.75rem 0;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.playlist-section h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.4rem, 2vw, 2.2rem);
+    text-align: left;
+}
+
+.playlist-grid {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: 1fr;
+    gap: 0.75rem;
+    align-items: stretch;
+    justify-items: stretch;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.playlist-grid::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.playlist-card {
+    width: 100%;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: grid;
+}
+
+.playlist-card iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+@media (max-height: 720px) {
+    .playlist-card iframe {
+        min-height: 120px;
+    }
+
+    .hero {
+        gap: 1rem;
+    }
+}
+
+/* Responsive: fall back to 2 columns and then 1 on very small screens */
+@media (max-width: 1000px) {
+    .playlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .playlist-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero {
+        padding: 0 0.5rem;
+    }
+}
